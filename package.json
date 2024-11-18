@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start:cc": "nx serve currency-convert",
-    "build:cc": "nx build currency-convert"
+    "build:cc": "nx build currency-convert",
+    "run:cc": "node dist/apps/currency-convert/server/server.mjs"
   },
   "private": true,
   "dependencies": {
