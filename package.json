@@ -2,7 +2,10 @@
   "name": "@currency-convert/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:cc": "nx serve currency-convert",
+    "build:cc": "nx build currency-convert"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
