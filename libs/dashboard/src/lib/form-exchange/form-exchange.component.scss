@@ -1,0 +1,55 @@
+.form-exchange {
+  border-radius: 12px;
+  margin: 32px 0 60px;
+  background-color: #f4f4f4;
+  padding: 0 16px;
+  &__flag {
+    position: relative;
+    top: -32px;
+    margin: 0 auto -16px;
+    border-radius: 8px;
+    width: 90px;
+    height: 64px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.4);
+  }
+  &__label {
+    display: block;
+  }
+  &__input {
+    -webkit-appearance: none;
+    border: none;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    &::-webkit-textfield-decoration-container {
+      display: none;
+    }
+  }
+  &__currency {
+    text-align: center;
+    display: block;
+    user-select: none;
+  }
+  &__swap {
+    position: relative;
+    bottom: -32px;
+    margin: -16px auto 0;
+    border-radius: 8px;
+    width: 64px;
+    background: #fff;
+    display: block;
+    aspect-ratio: 1;
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease-out;
+    &:hover,
+    &:focus-visible {
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+    }
+  }
+  &__swap-icon {
+    width: 40px;
+    margin: 0 auto;
+  }
+}

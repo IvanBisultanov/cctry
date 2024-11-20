@@ -1,0 +1,20 @@
+<div
+  class="dashboard__container"
+  [class.dashboard__container--pending]="conversionService.loadingRates()"
+>
+  @if ({ conversionRates: conversionService.conversionRates() }; as state) {
+    @if (state.conversionRates === null) {
+      <h1 class="dashboard__error">
+        Oops! Something went wrong. Please try again.
+      </h1>
+    } @else {
+      @if (state.conversionRates) {
+        <lib-form-exchange [currencyCode]="conversionService.baseCurrency()" />
+        <lib-currency-list [conversionRates]="state.conversionRates" />
+        <lib-add-currency [conversionRates]="state.conversionRates" />
+      } @else {
+        <div class="dashboard__pending"></div>
+      }
+    }
+  }
+</div>

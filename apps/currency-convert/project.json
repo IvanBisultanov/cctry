@@ -46,6 +46,27 @@
           ],
           "outputHashing": "all"
         },
+        "production-hetzner": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "libs/environments/src/lib/environment.ts",
+              "with": "libs/environments/src/lib/environment.hetzner.prod.ts"
+            }
+          ]
+        },
         "development": {
           "optimization": false,
           "extractLicenses": false,
@@ -60,11 +81,17 @@
         "production": {
           "buildTarget": "currency-convert:build:production"
         },
+        "production-hetzner": {
+          "buildTarget": "currency-convert:build:production-hetzner"
+        },
         "development": {
           "buildTarget": "currency-convert:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/currency-convert/proxy.conf.json"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",

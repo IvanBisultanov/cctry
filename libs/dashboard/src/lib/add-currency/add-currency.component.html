@@ -1,0 +1,98 @@
+<button
+  class="add-currency__add-btn"
+  (click)="dialog.showModal()"
+  type="button"
+  aria-label="Add more currencies"
+>
+  <ng-container *ngTemplateOutlet="plusSvgTemplate" />
+</button>
+
+<dialog class="add-currency__dialog" #dialog (click)="dialog.close()">
+  @if (dialog.open) {
+    <div class="add-currency__inner" (click)="$event.stopPropagation()">
+      <button
+        class="add-currency__close-button"
+        autofocus
+        type="button"
+        (click)="dialog.close()"
+        aria-label="Close dialog"
+      ></button>
+      <ul class="add-currency__list">
+        @if (
+          {
+            favorites: conversionService.favorites(),
+            baseCurrency: conversionService.baseCurrency(),
+            pinned: conversionService.pinned(),
+            amount: conversionService.amount(),
+            conversionRates: conversionRates(),
+          };
+          as state
+        ) {
+          @for (
+            item of state.conversionRates.rates.data | keyvalue;
+            track item
+          ) {
+            @let isInFavorites = state.favorites.includes(item.key);
+            <li
+              class="add-currency__item"
+              [class.add-currency__item--selected]="isInFavorites"
+            >
+              <img
+                class="add-currency__flag"
+                [src]="countryCode[item.key] + '.svg'"
+                alt=""
+              />
+              <div class="add-currency__details">
+                <div class="add-currency__amount">
+                  {{
+                    item.value * state.amount
+                      | currency: item.key : 'symbol-narrow' : '.2-2' : localeId
+                  }}
+                </div>
+                <div class="add-currency__name">
+                  {{ currencyName[item.key] }}
+                </div>
+              </div>
+              @if (
+                item.key !== state.pinned && item.key !== state.baseCurrency
+              ) {
+                <button
+                  class="add-currency__add"
+                  (click)="conversionService.toggleFavorite(item.key)"
+                  type="button"
+                  [attr.aria-label]="
+                    isInFavorites ? 'Remove from favorite' : 'Add to favorite'
+                  "
+                >
+                  @if (isInFavorites) {
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M7 12L17 12"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  } @else {
+                    <ng-container *ngTemplateOutlet="plusSvgTemplate" />
+                  }
+                </button>
+              }
+            </li>
+          }
+        }
+      </ul>
+    </div>
+  }
+</dialog>
+
+<ng-template #plusSvgTemplate>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path
+      d="M6 12H12M12 12H18M12 12V18M12 12V6"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</ng-template>

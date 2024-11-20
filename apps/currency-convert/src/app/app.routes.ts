@@ -1,3 +1,7 @@
 import { Route } from '@angular/router';
 
-export const appRoutes: Route[] = [];
+import { shellRoutes } from '@cc/shell';
+
+export const appRoutes: Route[] = [
+    ...shellRoutes,
+];

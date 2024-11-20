@@ -4,3 +4,12 @@
 /.nx/cache
 /.nx/workspace-data
 .angular
+
+**/dist
+**/coverage
+**/.vscode
+**/.github
+**/node_modules
+**/*.svg
+
+tmp

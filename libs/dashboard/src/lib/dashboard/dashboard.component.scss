@@ -1,0 +1,50 @@
+:host {
+  overflow: hidden;
+  display: block;
+}
+
+.dashboard {
+  &__container {
+    padding: 12px 12px 32px;
+    margin: 0 auto;
+    max-width: 480px;
+    transition: opacity 0.2s ease-out;
+    &--pending {
+      pointer-events: none;
+      touch-action: none;
+      opacity: 0.66;
+    }
+  }
+  &__error {
+    text-align: center;
+  }
+  &__pending {
+    margin: 40px auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    border-left-color: transparent;
+    animation: rotate 2s linear infinite;
+    &:before {
+      content: '';
+      margin: auto;
+      width: 52px;
+      height: 52px;
+      border: 2px solid #000;
+      border-left-color: transparent;
+      animation: rotate 2s linear infinite;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      border-radius: 50%;
+    }
+  }
+}
+@keyframes rotate {
+  to {
+    transform: rotate(359.99deg);
+  }
+}

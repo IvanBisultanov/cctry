@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:cc": "nx serve currency-convert",
-    "build:cc": "nx build currency-convert",
+    "start:cc": "nx serve currency-convert --port=4210 --host 0.0.0.0",
+    "build:cc": "nx build currency-convert --watch",
+    "build:cc:hetzner": "nx build currency-convert --configuration=production-hetzner",
     "run:cc": "node dist/apps/currency-convert/server/server.mjs"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
+    "@angular/cdk": "^18.2.14",
     "@angular/common": "~18.2.0",
     "@angular/compiler": "~18.2.0",
     "@angular/core": "~18.2.0",
@@ -19,8 +21,10 @@
     "@angular/platform-server": "~18.2.0",
     "@angular/router": "~18.2.0",
     "@angular/ssr": "~18.2.0",
+    "cors": "^2.8.5",
     "express": "~4.18.2",
     "rxjs": "~7.8.0",
+    "svg-country-flags": "^1.2.10",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
@@ -42,6 +46,8 @@
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/cors": "^2.8.17",
     "@types/express": "4.17.14",
     "@types/jest": "^29.5.12",
     "@types/node": "18.16.9",
@@ -53,7 +59,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-preset-angular": "~14.1.0",
     "nx": "20.1.2",
-    "prettier": "^2.6.2",
+    "prettier": "^3.3.3",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",

@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@cc/conversion-service": ["libs/conversion-service/src/index.ts"],
+      "@cc/dashboard": ["libs/dashboard/src/index.ts"],
+      "@cc/environments": ["libs/environments/src/index.ts"],
+      "@cc/header": ["libs/header/src/index.ts"],
+      "@cc/models": ["libs/models/src/index.ts"],
+      "@cc/shell": ["libs/shell/src/index.ts"],
+      "@cc/utils": ["libs/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

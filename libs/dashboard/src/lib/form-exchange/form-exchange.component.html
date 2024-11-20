@@ -1,0 +1,40 @@
+<form class="form-exchange">
+  <img
+    class="form-exchange__flag"
+    [src]="countryCode[currencyCode()] + '.svg'"
+    [alt]="currencyName[currencyCode()]"
+  />
+  <label class="form-exchange__label">
+    <input
+      id="amount"
+      name="amount"
+      strictNumberInput
+      maxlength="9"
+      class="form-exchange__input"
+      [(ngModel)]="amount"
+    />
+  </label>
+  <label class="form-exchange__currency" for="amount">{{
+    currencyName[currencyCode()]
+  }}</label>
+  <button
+    class="form-exchange__swap"
+    (click)="conversionService.swapCurrencies()"
+    type="button"
+    aria-label="Change active currency"
+  >
+    <svg
+      class="form-exchange__swap-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M3 12H21M3 12L7 8M3 12L7 16M21 12L17 16M21 12L17 8"
+        stroke="#000000"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+</form>

@@ -1,0 +1,18 @@
+.site-header {
+  &__container {
+    margin: 0 auto;
+    max-width: 820px;
+    padding: 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    transform: rotate(45deg);
+    width: 60px;
+    margin: 0 auto;
+  }
+  &__mode-icon {
+    width: 40px;
+  }
+}
