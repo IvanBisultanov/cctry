@@ -115,6 +115,7 @@
       position: sticky;
       background: linear-gradient(to top, rgba(#fdfdfd, 0), #fdfdfd);
       content: '';
+      pointer-events: none;
       flex-shrink: 0;
     }
     &:before {
