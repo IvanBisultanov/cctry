@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:cc": "nx serve currency-convert --port=4210 --host 0.0.0.0",
-    "build:cc": "nx build currency-convert --watch",
+    "start:cc": "nx serve currency-convert --port=4310 --host 0.0.0.0",
+    "build:cc": "nx build currency-convert",
     "build:cc:hetzner": "nx build currency-convert --configuration=production-hetzner",
     "run:cc": "node dist/apps/currency-convert/server/server.mjs"
   },
