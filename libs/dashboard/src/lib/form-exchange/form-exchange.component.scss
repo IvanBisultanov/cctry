@@ -3,10 +3,30 @@
   margin: 32px 0 60px;
   background-color: #f4f4f4;
   padding: 0 16px;
-  &__flag {
+  &__base-btn {
     position: relative;
     top: -32px;
     margin: 0 auto -16px;
+    display: block;
+  }
+  &__base-btn-swap-icon {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    border-radius: 8px;
+    background-color: #fff;
+    opacity: .5;
+    padding: 2px;
+    transition: opacity .2s ease-out;
+    svg {
+      width: 20px;
+    }
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+    }
+  }
+  &__flag {
     border-radius: 8px;
     width: 90px;
     height: 64px;

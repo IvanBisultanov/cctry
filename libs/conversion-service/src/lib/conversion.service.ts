@@ -68,10 +68,7 @@ export class ConversionService {
       }
       return [currencyCode, ...val];
     });
-    localStorage.setItem(
-      'user_currency_list',
-      JSON.stringify(this.favoritesSignal()),
-    );
+    this.saveCurrencyListToSL();
   }
 
   constructor() {
@@ -82,11 +79,27 @@ export class ConversionService {
     }
   }
 
-  swapCurrencies() {
-    const currentPin = this.pinned();
-    this.setPinnedCurrency(this.baseCurrency());
-    this.baseCurrencySignal.set(currentPin);
+  swapCurrencies(currencyCode?: string) {
+    if (currencyCode) {
+      if (!this.favorites().includes(currencyCode)) {
+        this.favoritesSignal.set([currencyCode, ...this.favoritesSignal()]);
+      }
+      this.pinnedSignal.set(this.baseCurrency());
+      this.baseCurrencySignal.set(currencyCode);
+      this.saveCurrencyListToSL();
+    } else {
+      const currentPin = this.pinned();
+      this.setPinnedCurrency(this.baseCurrency());
+      this.baseCurrencySignal.set(currentPin);
+    }
     localStorage.setItem('user_base_currency', this.baseCurrencySignal());
+  }
+
+  private saveCurrencyListToSL() {
+    localStorage.setItem(
+      'user_currency_list',
+      JSON.stringify(this.favoritesSignal()),
+    );
   }
 
   private tryToRestoreCurrencyList() {
